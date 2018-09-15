@@ -1,0 +1,35 @@
+{
+    "list": [
+        {
+        "question": "Who was the first enemy in the Avengers",
+            "choices": [
+                "Loki",
+                "Odin",
+                "Thanos",
+                "Ultron"
+            ],
+            "answer": "Bill Self"
+        },
+        {
+        "question": "Who created Peter Parkers suit?",
+            "choices": [
+                "Tony Stark",
+                "Bruce Banner",
+                "Steve Rogers",
+                "Nick Fury"
+            ],
+            "answer": "tony Stark"
+        },
+        {
+        "question": "Who other than Thor is worthy of carrying the Mjolnir?",
+            "choices": [
+                "Iron Man",
+                "Thanos",
+                "Spiderman",
+                "Captain America"
+            ],
+            "answer": "Captain America"
+        }
+        
+    ]
+}

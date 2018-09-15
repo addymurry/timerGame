@@ -1,0 +1,29 @@
+body {
+    background-image: url("https://wallpaperstream.com/wallpapers/thumbnails/avengers/Avengers-3D-Logo_thumb2x.jpg");
+    text-align: center;
+    max-width: 99%;
+}
+
+#background {
+    background: gray;
+    margin-top: 300px;
+    padding: 40px;
+
+}
+
+.begin {
+    margin-top: 20px;
+    color: red;
+}
+
+#questions {
+    list-style: none;
+    margin: 0 auto;
+    align-content: center;
+}
+
+#questions li {
+    border: 1px black solid;
+    width: 60%;
+
+}
