@@ -1,23 +1,22 @@
-
 $(document).ready( function () {
 
     var correct = 0;
     var incorrect= 0;
     var item = 0;
-    var answer = '';
-    var allQuestions = 0;
+    var answer = "";
+    var theList = 0;
     
-    var time = 15;
+    var time = 30;
     var intervalId;
     
- function pullQuestion() {
+    function pullQuestion() {
         $('#questions').empty();
     
-        $.getJSON('assets/javascript/questions.json', function (data) {
+        $.getJSON("assets/questions.json", function (data) {
             answer = data.list[item].answer;
-            allQuestions = data.list.length;
+            theList = data.list.length;
     
-            var $question = $('<h3>').html(data.list[item].question)
+            var $question = $('<h2>').html(data.list[item].question)
     
             var $options = $('<ul>').addClass('choices');
     
@@ -26,54 +25,41 @@ $(document).ready( function () {
                     '<li class="option">' + data.list[item].choices[index] + '</li>'
                 )
             })
-
-    function countDown () {
-       
-        time--;
-        $('#timer').html('<h2> Time Remaining: ' + time + '</h2>');
-        if (time <=0){
-           evalAnswer(null);
     
-        }
-    }
+  
     
-    function run() {
+    function go() {
         clearInterval(intervalId);
         intervalId = setInterval(countDown, 1000);
       }
-      
         var $p = $('<div>').html($question).append($options);
     
         $('#questions').append($p);
     
     });
+      function countDown () {
+       
+        time--;
+        $('#countdown').html('<h2> Time left: ' + time + '</h2>');
+        if (time <=0){
+           TheAnswer("");
     
+        }
     }
-  
+    }
     function startGame () {
         item = 0;
         correct = 0;
         incorrect= 0;
-        allQuestions= 0;
+        theList= 0;
     
         pullQuestion();
-        run();
+        go();
     }
     
-     $(document).on('click', '.option', function() {
-        evalAnswer(this.innerText);
-    });
- 
-    $(document).on('click', '.start', function() {
-        pullQuestion();
-        run();
-    });
-    console.log(pullQuestion)
-
-   
-    function evalAnswer (text) {
+    function TheAnswer (text) {
         item++;
-        time = 15;
+        time = 30;
         if(text === answer) {
             correct++;
             pullQuestion();
@@ -83,28 +69,42 @@ $(document).ready( function () {
             pullQuestion();
         }
         
-        if (item === allQuestions) {
+        if (item === theList) {
             endGame();
         }
-    }
+    }   
+     $(document).on('click', '.option', function() {
+        TheAnswer(this.innerText);
+    });
+
+    $(document).on('click', '.start', function() {
+        pullQuestion();
+        go();
+    });
+ 
+    
     function endGame () {
         $('#questions').empty();
-        $('#timer').empty();
+        $('#countdown').empty();
     
-        var $right = $('<h3 class= "right">').text('Correct: ' + correct)
-        var $wrong = $('<h3 class= "wrong">').text('Incorrect: ' + incorrect)
-        var $Reset = $('<button>').addClass('start-over').text('Start Over');
+        var $right = $('<h4 class= "right">').text('Correct: ' + correct)
+        var $wrong = $('<h4 class= "wrong">').text('Incorrect: ' + incorrect)
+
     
         var $gameOver = $('<div>').append(
-            $right, $wrong, $Reset
+            $right, $wrong,
         )
     
         clearInterval(intervalId);
     
         $('#questions').append($gameOver)
     
-        $('.start-over').on('click', startGame)
-        
-    
     }
+
+    
+    
+    
+    
+    
+    
     })

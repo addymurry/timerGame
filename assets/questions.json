@@ -1,5 +1,5 @@
 {
-    "list": [
+    "list":[
         {
         "question": "Who was the first enemy in the Avengers",
             "choices": [
@@ -18,7 +18,7 @@
                 "Steve Rogers",
                 "Nick Fury"
             ],
-            "answer": "tony Stark"
+            "answer": "Tony Stark"
         },
         {
         "question": "Who other than Thor is worthy of carrying the Mjolnir?",
